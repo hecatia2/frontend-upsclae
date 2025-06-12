@@ -13,8 +13,13 @@ export default function Home() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Ganti URL backend sesuai deploy/localmu
+  // Pakai env Vercel
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  // DEBUG: cek env var yang dipakai di browser
+  useEffect(() => {
+    console.log("NEXT_PUBLIC_BACKEND_URL:", BACKEND_URL);
+  }, [BACKEND_URL]);
 
   // Fetch list engine & models saat page load
   useEffect(() => {
@@ -24,7 +29,7 @@ export default function Home() {
         setEngines(data.engines);
         setSelectedEngine(Object.keys(data.engines)[0]);
       });
-  }, []);
+  }, [BACKEND_URL]);
 
   // Update model dropdown setiap engine berubah
   useEffect(() => {
@@ -151,4 +156,3 @@ export default function Home() {
     </main>
   );
 }
-
