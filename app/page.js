@@ -14,7 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   // Ganti URL backend sesuai deploy/localmu
-  const BACKEND_URL = "https://laheca-donut-hole.hf.space";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   // Fetch list engine & models saat page load
   useEffect(() => {
